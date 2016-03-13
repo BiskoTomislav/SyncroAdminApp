@@ -1,0 +1,169 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="project_partnership_input_fields">
+	<div class="form-group row">
+		<fieldset>
+			<legend>Main info</legend>
+			<label class="form-control-label col-sm-2" for="name">Project name</label>
+			<div class="col-sm-4">
+				<input type="text" id="name" name="name" class="form-control" th:value="*{data.name}" th:field="${project.data.name}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="status">Status</label>
+		<div class="col-sm-4">
+			<select id="status" th:field="*{data.status}" style="width: 100%">
+				<option th:each="type : *{projectStatusOptions}" th:value="${type}" th:text="${type}">Status ...</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="type">Project type</label>
+		<div class="col-sm-4">
+			<select id="type" th:field="*{data.type}" style="width: 100%">
+				<option th:each="type : *{projectTypeOptions}" th:value="${type}" th:text="${type}">Status ...</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="subject">Topics</label>
+		<div class="col-sm-4">
+			<input type="text" id="subject" name="subject" class="form-control" th:value="*{data.subject}" th:field="${project.data.subject}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+
+		<label class="form-control-label col-sm-2" for="projectStartDate">Begining of the project</label>
+		<div class="col-sm-4">
+			<input type="date" id="projectStartDate" name="projectStartDate" class="form-control" th:value="*{timeframe.projectStartDate}" th:field="${project.timeframe.projectStartDate}" />
+		</div>
+
+		<label class="form-control-label col-sm-2" for="projectEndDate">End of the project</label>
+		<div class="col-sm-4">
+			<input type="date" id="projectEndDate" name="projectEndDate" class="form-control" th:value="*{timeframe.projectEndDate}" th:field="${project.timeframe.projectEndDate}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="activityStartDate">Begining of the activity</label>
+		<div class="col-sm-4">
+			<input type="date" id="activityStartDate" name="activityStartDate" class="form-control" th:value="*{timeframe.activityStartDate}" th:field="${project.timeframe.activityStartDate}" />
+		</div>
+
+		<label class="form-control-label col-sm-2" for="activityEndDate">End of the activity</label>
+		<div class="col-sm-4">
+			<input type="date" id="activityEndDate" name="activityEndDate" class="form-control" th:value="*{timeframe.activityEndDate}" th:field="${project.timeframe.activityEndDate}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="venue">Venue</label>
+		<div class="col-sm-4">
+			<input type="text" id="venue" name="venue" class="form-control" th:value="*{financingProgram.venue}" th:field="${project.financingProgram.venue}" />
+		</div>
+
+		<label class="form-control-label col-sm-2" for="applicantOrganization">Applicant organization</label>
+		<div class="col-sm-4">
+			<input type="text" id="applicantOrganization" name="applicantOrganization" class="form-control" th:value="*{applicantOrganization}" th:field="${project.applicantOrganization}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="grant">Grant programme</label>
+		<div class="col-sm-4">
+			<input type="text" id="grant" name="grant" class="form-control" th:value="*{financingProgram.grant}" th:field="${project.financingProgram.grant}" />
+		</div>
+
+		<label class="form-control-label col-sm-2" for="administrativeBody">Administrative body</label>
+		<div class="col-sm-4">
+			<input type="text" id="administrativeBody" name="administrativeBody" class=" form-control" th:value="*{financingProgram.administrativeBody}" th:field="${project.financingProgram.administrativeBody}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Contact person</legend>
+			<label class="form-control-label col-sm-2" for="personName">Person name</label>
+			<div class="col-sm-4">
+				<input id="personName" name="personName" type="text" class="form-control" th:value="*{financingProgram.contactPerson.personName}" th:field="${project.financingProgram.contactPerson.personName}" />
+			</div>
+			<label class="form-control-label col-sm-2" for="personRole">Position</label>
+			<div class="col-sm-4">
+				<input id="personRole" name="personRole" type="text" class="form-control" th:value="*{financingProgram.contactPerson.personRole}" th:field="${project.financingProgram.contactPerson.personRole}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Contact info</legend>
+
+			<label class="form-control-label col-sm-2" for="personEmail">Email</label>
+			<div class="col-sm-4">
+				<input id="personEmail" name="personEmail" type="email" placeholder="" class="form-control" th:value="*{financingProgram.contactPerson.personEmail}" th:field="${project.financingProgram.contactPerson.personEmail}" />
+			</div>
+			<label class="form-control-label col-sm-2" for="personPhone">Telephone</label>
+			<div class="col-sm-4">
+				<input id="personPhone" name="personPhone" type="text" class=" form-control" th:value="*{financingProgram.contactPerson.personPhone}" th:field="${project.financingProgram.contactPerson.personPhone}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+
+		<label class="form-control-label col-sm-2" for="ref">Reference number</label>
+		<div class="col-sm-4">
+			<input id="ref" name="personEmail" type="text" placeholder="" class="form-control" th:value="*{financingProgram.refId}" th:field="${project.financingProgram.refId}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Financing</legend>
+			<label class="form-control-label col-sm-2" for="coFinancingKN">Co-financing (KN)</label>
+			<div class="col-sm-4">
+				<input id="coFinancingKN" name="coFinancingKN" type="text" placeholder="" class="form-control" th:value="*{financingProgram.coFinancingKN}" th:field="${project.financingProgram.coFinancingKN}" />
+			</div>
+			<label class="form-control-label col-sm-2" for="coFinancingEU">Co-financing (EUR)</label>
+			<div class="col-sm-4">
+				<input id="coFinancingEU" name="coFinancingEU" type="text" placeholder="" class="form-control" th:value="*{financingProgram.coFinancingEU}" th:field="${project.financingProgram.coFinancingEU}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="value">Excange rate</label>
+		<div class="col-sm-4">
+			<input id="value" name="value" type="text" placeholder="" class="form-control" th:value="*{financingProgram.value}" th:field="${project.financingProgram.value}" />
+		</div>
+		<label class="form-control-label col-sm-2" for="dateOfValue">Exchange rate date</label>
+		<div class="col-sm-4">
+			<input id="dateOfValue" name="dateOfValue" type="date" placeholder="" class=" form-control" th:value="*{financingProgram.dateOfValue}" th:field="${project.financingProgram.dateOfValue}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="submissionDate">Submission of proposal</label>
+		<div class="col-sm-4">
+			<input type="date" id="submissionDate" name="submissionDate" class="form-control" th:value="*{submissionDate}" th:field="${project.submissionDate}" />
+		</div>
+		<label class="form-control-label col-sm-2" for="due">Final report deadline</label>
+		<div class="col-sm-4">
+			<input type="date" id="due" name="due" class="form-control" th:value="*{financingProgram.due}" th:field="${project.financingProgram.due}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Notes</legend>
+
+			<label class="form-control-label col-sm-2" for="notes">Notes</label>
+			<div class="controls" style="padding-top: 5px">
+				<textarea id="notes" name="notes" class="form-control" rows="4" style="width: 100%" th:value="*{notes}" th:field="${project.notes}">Notes ...</textarea>
+			</div>
+		</fieldset>
+	</div>
+</div>

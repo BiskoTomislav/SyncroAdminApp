@@ -1,0 +1,159 @@
+@CHARSET "UTF-8";
+a {
+	word-wrap: break-word;
+}
+.right_column_text_align {
+	padding-left:30px;
+}
+
+.icons_collumn {
+	width : 40px;
+	text-align:center;
+}
+
+.icons_collumn > span {
+	padding : 5px;
+	margin-lef : 5px;
+}
+
+.main_nav {
+	margin-bottom: 0px;
+}
+
+.add_icon {
+	margin: 10px 0px 5px 10px;
+	font-size: 25px;
+  	color: #333;
+  	background-color: #D7D3D3;
+  	padding: 8px 8px 8px 11px;}
+
+.glyphicon:hover, .glyphicon:focus {
+  	color: #fff;
+    background-color: #333;
+}
+
+.unique_value {
+	display: none;
+}
+
+.main_user_info_form , .main_project_info_form, .main_contact_info_form , .main_partner_info_form {
+	width: 300px; 
+	float: left;
+	clear: both;
+
+}
+
+.add_additional_user_info_form, .add_additional_project_info_form, .add_additional_contact_info_form, .add_additional_partner_info_form {
+
+}
+
+ #feedback { font-size: 1.4em; }
+ #selectable .ui-selecting { background: #FECA40; }
+ #selectable .ui-selected { background: #F39814; color: white; }
+ #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+ #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+.project_for_users_row, .project_for_partners_row {
+	border-bottom: 2px;
+}
+
+.user_extra_info_row, #user_extra_info_row1 > td, #user_extra_info_row2 > td, #user_extra_info_row3 > td, tr.user_extra_info_row4 > td.user_extra_info_data{
+	
+  	background-color: white;
+  	border: none;
+  	height: 10px;
+
+}
+
+.project_extra_info_row, #project_extra_info_row1 > td, #project_extra_info_row2 > td,tr.project_extra_info_row4 > td.project_extra_info_data{
+	
+  	background-color: white;
+  	border: none;
+  	height: 10px;
+
+}
+
+ tr.user_extra_info_row4 > td >p{
+ 	font-size: 13px;
+ 	padding: 0px;
+ 	margin:0px;
+ }
+ 
+ .partner_extra_info_row > td, #partner_extra_info_row1 > td, #partner_extra_info_row2 > td, #partner_extra_info_row3 > td, tr.partner_extra_info_row4 > td.partner_extra_info_data{
+	
+  	background-color: white;
+  	border: none;
+  	height: 10px;
+
+}
+
+ tr.partner_extra_info_row4 > td >p{
+ 	font-size: 13px;
+ 	padding: 0px;
+ 	margin:0px;
+ }
+
+#project_extra_info_row1 > td {
+	
+  	background-color: white;
+  	border: none;
+}
+
+#contact_extra_info_row1 > td {
+	
+  	background-color: white;
+  	border: none;
+}
+
+#partner_extra_info_row1 > td {
+	
+  	background-color: white;
+  	border: none;
+}
+
+.edit_delete_contacts_th {
+	text-align:center; 
+}
+
+div.row {
+	padding-top: 5px;
+	padding-left: 15px;
+}
+
+legend {
+	padding-top: 25px;
+}
+
+img {
+   border: 1px solid black;
+}
+
+.custom-file-input {
+  visibility: hidden;
+  width: 0;
+  position: relative;
+}
+.custom-file-input::before {
+  content: 'Upload photo';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 600;
+  font-size: 8pt;
+  visibility: visible;
+  position: absolute;
+  width: 99px;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}

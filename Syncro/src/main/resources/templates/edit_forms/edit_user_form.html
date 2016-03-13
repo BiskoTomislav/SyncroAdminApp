@@ -1,0 +1,97 @@
+<div class="col-md-6 col-md-offset-3" xmlns:th="http://www.thymeleaf.org" th:fragment="edit_user">
+	<form id="editUserForm" action="/editUser" enctype="multipart/form-data" th:object="${user}">
+		<input class="unique_value _id" name="unique_value" type="hidden" th:value="*{_id}" th:field="${user._id}" />
+		<div class="row form-inline">
+			<img th:src="*{profileImage}" /> <label id="chosenFile" class="control-label" for="profile_img"></label>
+			<div style="padding: 5px 0px 5px 0px;">
+				<input type="file" id="profile_img" class="custom-file-input" name="profile_img" accept="image/*"></input>
+			</div>
+
+			<!-- Button -->
+			<div class="control-group" style="position: fixed; top: 45px; left: 10px;">
+				<label class="control-label" for="saveUserButton"></label>
+				<div class="controls">
+					<button id="saveUserButton" name="saveUserButton" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="common_input_fields/user_input_fields :: user_input_fields"></div>
+
+		<!-- Add projects/partnerships to user -->
+		<div class="form-group row">
+			<fieldset>
+				<legend>Projects</legend>
+
+				<div class="form-group">
+					<select id="projectId" name="projectId" style="width: 250px">
+						<option th:each="project : ${projects}" th:value="${project._id}" th:text="${project.data.name}">Projects</option>
+					</select>
+					<button id="addProjectToUserButton" name="addProjectButton" type="button" class="btn btn-primary" style="float: right;">Add project</button>
+				</div>
+
+				<div class="form-group" style="padding-top: 5px">
+					<label class="control-label" for="postNum">Project status</label> <input id="userProjectStatus" class="input-xlarge  form-control" name="userProjectStatus" type="text" />
+				</div>
+
+				<div class="form-inline" style="padding-top: 5px">
+					<textarea id="userProjectInfo" class="input-xlarge  form-control" name="userProjectInfo" rows="4" style="width: 100%">Status info ... </textarea>
+				</div>
+
+				<div id="user_projects_list">
+					<div th:include="lists/user_projects_list :: user_projects_list"></div>
+				</div>
+			</fieldset>
+		</div>
+	</form>
+</div>
+<script>
+
+	$(document).ready(
+			function() {
+				$("#nationality").msDropdown();
+				$("#citizenship").msDropdown();
+				$("#status").msDropdown();
+				$("#projectId").msDropdown();
+
+				$("#profile_img").change(
+						function() {
+							var filename = $('input[type=file]').val().replace(
+									/C:\\fakepath\\/i, '');
+							$("#chosenFile").html(
+									"Photo for upload: " + filename);
+						});
+			})
+
+	$("#saveUserButton").click(function() {
+		var frm = $('#editUserForm');
+		frm.submit(function(ev) {
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				type : "POST",
+				data : new FormData($("#editUserForm")[0]),
+				enctype : 'multipart/form-data',
+				processData : false,
+				contentType : false,
+				cache : false,
+				success : function(data) {
+					$("#main_content").hide().html(data).fadeIn('slow');
+				}
+			});
+			ev.preventDefault();
+		});
+	});
+
+	$("#addProjectToUserButton").click(function() {
+
+		$.post("/addProjectToUser", {
+			userId : $('.unique_value').val(),
+			projectId : $('#projectId').val(),
+			userProjectStatus : $('#userProjectStatus').val(),
+			userProjectInfo : $('#userProjectInfo').val()
+		}).done(function(data) {
+			$("#user_projects_list").hide().html(data).fadeIn('slow');
+		});
+	});
+</script>

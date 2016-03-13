@@ -1,0 +1,54 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="projects_list">
+		<div>
+			<!-- Button -->
+			<div class="control-group" style="padding: 10px;">
+				<div class="controls">
+					<button id="addProjectButton" name="addProjectButton"
+						class="btn btn-primary">Add project</button>
+				</div>
+			</div>
+		</div>
+		<!-- Table data -->
+		<table  id="table-transform" class="table table-striped content" data-toggle="table" style="table-layout:fixed;"
+			data-sort-name="projects_sort" data-sort-order="desc">
+			<thead>
+				<tr>
+					<th class="unique_value" >ID</th>
+					<th data-field="name" data-sortable="true">Name</th>
+					<th data-field="status" data-sortable="true">Status</th>
+					<th data-field="type" data-sortable="true">Type</th>
+					<th data-field="subject" data-sortable="true">Subject</th>
+					
+					<th data-field="duration" data-sortable="true">Venue</th>
+					<th data-field="activity" data-sortable="true">Applicant organization</th>
+					<th data-field="place" data-sortable="true">Grant programme</th>
+					<th data-field="organizer" data-sortable="true">Administrative body</th>
+					
+					<th class="text-center" >Edit/Delete</th>
+				</tr>
+			</thead>
+			<tbody class="searchable project_tbody">
+				<tr class="row_main_info" th:each="project : ${projects}" th:object="${project}">
+					<td class="unique_value" th:text="*{_id}"></td>
+					<td  th:text="*{data.name}"></td>
+					<td th:text="*{data.status}"></td>
+					<td th:text="*{data.type}"></td>
+					<td th:text="*{data.subject}"></td>
+					
+					<td th:text="*{financingProgram.venue}"></td>
+					<td th:text="*{applicantOrganization}"></td>
+					<td th:text="*{financingProgram.grant}"></td>
+					<td th:text="*{financingProgram.administrativeBody}"></td>
+					
+					<td class="icons_collumn">
+						<span class="glyphicon glyphicon-pencil img-circle edit_icon" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-trash img-circle delete_icon" aria-hidden="true"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+			<script type="text/javascript">
+		        var $table = $('#table-transform');
+		        $table.bootstrapTable();
+			</script>
+	</div>

@@ -1,0 +1,59 @@
+	<div  xmlns:th="http://www.thymeleaf.org" th:fragment="partners_list">
+		<div>
+			<!-- Button -->
+			<div class="control-group" style="padding: 10px;">
+				<div class="controls">
+					<button id="addPartnerButton" name="addPartnerButton"
+						class="btn btn-primary">Add partner</button>
+				</div>
+			</div>
+		</div>
+		<!-- Table data -->
+		<table  id="table-transform" class="table table-striped content" data-toggle="table" style="table-layout:fixed;"
+			data-sort-name="partners_sort" data-sort-order="desc">
+			<thead>
+				<tr>
+					<th class="unique_value" >ID</th>
+					<th data-field="name" data-sortable="true">Name</th>
+					<th data-field="country" data-sortable="true">Country</th>
+					<th data-field="address" data-sortable="true">Address</th>
+					<th data-field="email" data-sortable="true">Email</th>
+					
+					<th data-field="phone" data-sortable="true">Phone</th>
+					<th data-field="web" data-sortable="true">Web site</th>
+					<th data-field="facebook" data-sortable="true">Facebook</th>
+					<th  class="text-center" >Edit/Delete</th>
+				</tr>
+			</thead>
+			<tbody class="searchable partner_tbody">
+				<tr class="row_main_info" th:each="partner : ${partners}" th:object="${partner}">
+					<td class="unique_value" th:text="*{_id}"></td>
+					<td th:text="*{data.companyName}"></td>
+					<td><img src="images/msdropdown/icons/blank.gif" class="flag hr fnone" th:class="'flag ' + *{data.country} + ' fnone'"></img><span th:text="*{data.countryFullName}"></span></td>
+					<td th:text="*{data.address}"></td>
+					<td>
+						<a  target="_blank" href="mailto:name@rapidtables.com" th:href="'mailto:' + *{data.email}" th:text="*{data.email}">Send mail</a>
+					</td>
+					
+					<td th:text="*{data.phone}"></td>
+					
+					<td>
+						<a  target="_blank" href="name@rapidtables.com" th:href="'http://www.' + *{data.webSite}" th:text="'http://www.' + *{data.webSite}">Send mail</a>
+					</td>
+					<td>
+						<a  target="_blank" href="name@rapidtables.com" th:href="'http://www.' + *{data.facebook}" th:text="'http://www.' + *{data.facebook}">Send mail</a>
+					</td>
+					
+					<td class="icons_collumn">
+						<span class="glyphicon glyphicon-pencil img-circle edit_icon" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-trash img-circle delete_icon" aria-hidden="true"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+			<script type="text/javascript">
+				var $table = $('#table-transform');
+		        $table.bootstrapTable();
+
+			</script>
+	</div>

@@ -1,0 +1,72 @@
+<div class="col-md-6 col-md-offset-3" xmlns:th="http://www.thymeleaf.org" th:fragment="edit_partner">
+	<form id="editPartnerForm" action="/editPartner" enctype="multipart/form-data" th:object="${partner}">
+		<input class="unique_value _id" name="unique_value" type="hidden" th:value="*{_id}" th:field="${partner._id}" />
+		<div class="row form-inline">
+
+			<!-- Button -->
+			<div class="control-group" style="position: fixed; top: 45px; left: 10px;">
+				<label class="control-label" for="savePartnerButton"></label>
+				<div class="controls">
+					<button id="savePartnerButton" name="savePartnerButton" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="common_input_fields/partner_input_fields :: partner_input_fields"></div>
+
+		<div class="form-group row">
+			<fieldset>
+				<legend>Projects</legend>
+				<div class="form-group">
+					<select id="projectId" name="projectId" style="width: 250px">
+						<option th:each="project : ${projects}" th:value="${project._id}" th:text="${project.data.name}">Projects</option>
+					</select>
+					<button id="addProjectToPartnerButton" name="addProjectButton" type="button" class="btn btn-primary" style="float: right;">Add project</button>
+				</div>
+				<div class="form-group" style="padding-top: 5px">
+					<label class="control-label" for="partnersProjectStatus">Project status</label> <input id="partnersProjectStatus" class="input-xlarge  form-control" name="partnersProjectStatus" type="text" />
+				</div>
+				<div class="form-inline" style="padding-top: 5px">
+					<textarea id="partnersProjectInfo" class="input-xlarge  form-control" name="partnersProjectInfo" rows="4" style="width: 100%">Status info ... </textarea>
+				</div>
+
+				<div id="partner_projects_list">
+					<div th:include="lists/partner_projects_list :: partner_projects_list"></div>
+				</div>
+			</fieldset>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	$("#status").msDropdown();
+	$("#country").msDropdown();
+	$("#projectId").msDropdown();
+
+	$("#savePartnerButton").click(function() {
+		var frm = $('#editPartnerForm');
+		frm.submit(function(ev) {
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				data : frm.serialize(),
+				success : function(data) {
+					$("#main_content").hide().html(data).fadeIn('slow');
+				}
+			});
+
+			ev.preventDefault();
+		});
+	});
+
+	$("#addProjectToPartnerButton").click(function() {
+
+		$.post("/addProjectToPartner", {
+			partnerId : $('.unique_value').val(),
+			projectId : $('#projectId').val(),
+			partnerProjectStatus : $('#partnersProjectStatus').val(),
+			partnerProjectInfo : $('#partnersProjectInfo').val()
+		}).done(function(data) {
+			$("#partner_projects_list").hide().html(data).fadeIn('slow');
+		});
+	});
+</script>

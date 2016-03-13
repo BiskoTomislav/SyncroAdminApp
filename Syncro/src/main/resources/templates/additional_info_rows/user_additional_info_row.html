@@ -1,0 +1,118 @@
+
+<tr id="user_extra_info_row1" class="user_extra_info_row" xmlns:th="http://www.thymeleaf.org" th:object="${user}">
+	<td>
+	<img th:src="*{profileImage}" />
+	</td>
+	
+	<td >
+		<p ><b>Home address:</b></p>
+		<p th:text="*{homeAddress.address}"></p>
+		<p th:text="*{homeAddress.city}"></p>
+		<p th:text="*{homeAddress.postNum}"></p>
+	</td>
+	<td>
+		<p ><b>Residence address:</b></p>
+		<p th:text="*{livingAddress.address}"></p>
+		<p th:text="*{livingAddress.city}"></p>
+		<p th:text="*{livingAddress.postNum}"></p>
+	</td>
+	
+
+	
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+</tr>
+
+<tr id="user_extra_info_row2" class="user_extra_info_row" xmlns:th="http://www.thymeleaf.org" th:object="${user}">
+		<td>
+	<p ><b>Citizenship:</b></p>
+		<img src="images/msdropdown/icons/blank.gif" class="flag hr fnone" th:class="'flag ' +  *{data.citizenship} + ' fnone'"></img>
+		<span class="ddlabel" th:text="${fullNameCitizenship}"></span>
+	</td>
+	<td>
+	<p ><b>Nationality:</b></p>
+		<img src="images/msdropdown/icons/blank.gif" class="flag hr fnone" th:class="'flag ' + *{data.nationality} + ' fnone'"></img>
+		<span class="ddlabel" th:text="${fullNameNationality}"></span>
+	</td>
+	<td>
+	<p ><b>Email:</b></p>
+		<a  target="_blank" href="mailto:name@rapidtables.com" th:href="'mailto:' + *{data.email}" th:text="*{data.email}">Send mail</a>
+	</td>
+	<td>
+	<p ><b>Mobile:</b></p>
+		<p th:text="*{data.mobile}"></p>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+
+	</td>
+</tr>
+<tr id="user_extra_info_row3" class="user_extra_info_row" xmlns:th="http://www.thymeleaf.org" th:object="${user}">
+	<td>
+	<b>Project name:</b>
+	</td>
+	<td>
+	<b>Status:</b>
+	</td>
+	<td colspan="4">
+	<b>Info:</b>
+	</td>
+
+</tr>
+
+<tr  class="user_extra_info_row user_extra_info_row4" xmlns:th="http://www.thymeleaf.org" th:each="project : ${userProjects}" th:object="${project}"  >	
+
+	<td class="user_extra_info_data">
+		<p th:text="*{project.data.name}"> / </p>
+	</td>
+	<td class="user_extra_info_data">
+		<p th:text="*{status}"> / </p>
+	</td>
+	<td colspan="4" class="user_extra_info_data">
+		<p th:text="*{info}"> / </p>
+	</td>
+</tr>
+
+<tr th:if="${#lists.isEmpty(userProjects)}" class="user_extra_info_row user_extra_info_row4" xmlns:th="http://www.thymeleaf.org"  th:object="${project}">	
+
+	<td class="user_extra_info_data">
+		<p> / </p>
+	</td>
+	<td class="user_extra_info_data">
+		<p > / </p>
+	</td>
+	<td colspan="4" class="user_extra_info_data">
+		<p> / </p>
+	</td>
+
+</tr>

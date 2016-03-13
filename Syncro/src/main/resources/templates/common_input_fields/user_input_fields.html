@@ -1,0 +1,128 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="user_input_fields">
+	<div class="form-group row">
+		<fieldset>
+			<legend>Main info</legend>
+			<label class="col-sm-2 form-control-label" for="userID">User ID</label>
+			<div class="col-sm-4">
+				<input type="text" id="userID" name="userID" class="form-control" th:value="*{userId}" th:field="${user.userId}" />
+			</div>
+			<label class="col-sm-2 form-control-label" for="oib">OIB</label>
+			<div class="col-sm-4">
+				<input type="text" id="oib" name="oib" class="form-control" th:value="*{data.oib}" th:field="${user.data.oib}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="name">Name</label>
+		<div class="col-sm-4">
+			<input type="text" id="name" name="name" class="form-control" th:value="*{data.name}" th:field="${user.data.name}" />
+		</div>
+		
+		<label class="form-control-label col-sm-2" for="surname">Surname</label>
+		<div class="col-sm-4">
+			<input type="text" id="surname" name="surname" class="form-control" th:value="*{data.surname}" th:field="${user.data.surname}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="dob">Date of Birth</label>
+		<div class="col-sm-4">
+			<input type="date" id="dob" name="dob" class="form-control" th:value="*{data.dob}" th:field="${user.data.dob}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="sex">Sex</label>
+		<div class="col-sm-4">
+			<span th:each="ty : ${new String[]{'F', 'M'}}"> <label th:text="${ty}"></label> <input type="radio" th:field="*{data.sex}" th:value="${ty}" />
+			</span>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="status">Membership status</label>
+		<div class="col-sm-4">
+			<select id="status" th:field="*{data.status}" style="width: 100%">
+				<option th:each="type : *{userStatusOptions}" th:value="${type}" th:text="${type}">Status ...</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+
+		<label class="form-control-label col-sm-2" for="nationality">Nationality</label>
+		<div class="col-sm-4">
+			<select name="nationality" id="nationality" class="form-control" style="width: 100%" th:include="countries :: countries" th:field="*{data.nationality}">
+			</select>
+		</div>
+
+		<label class="form-control-label col-sm-2" for="citizenship">Citizenship</label>
+		<div class="col-sm-4">
+			<select name="citizenship" id="citizenship" class="form-control" style="width: 100%" th:include="countries :: countries" th:field="*{data.citizenship}">
+
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Contact info</legend>
+			<label class="form-control-label col-sm-2" for="email">Email</label>
+			<div class="col-sm-4">
+				<input id="mobile" name="mobile" type="email" placeholder="" class="form-control" th:value="*{data.email}" th:field="${user.data.email}" />
+			</div>
+			<label class="form-control-label col-sm-2" for="mobile">Mobile</label>
+			<div class="col-sm-4">
+				<input id="mobile" name="mobile" type="text" class="form-control" th:value="*{data.mobile}" th:field="${user.data.mobile}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Home address</legend>
+			<label class="form-control-label col-sm-2" for="address">Address</label>
+			<div class="col-sm-4">
+				<input id="address" name="address" type="text" placeholder="" class="form-control" th:value="*{homeAddress.address}" th:field="${user.homeAddress.address}" />
+			</div>
+
+
+		</fieldset>
+	</div>
+	<div class="form-group row">
+
+		<label class="form-control-label col-sm-2" for="city">City</label>
+		<div class="col-sm-4">
+			<input id="city" name="city" type="text" placeholder="" class="input-xlarge  form-control" th:value="*{homeAddress.city}" th:field="${user.homeAddress.city}" />
+		</div>
+
+		<label class="form-control-label col-sm-2" for="postNum">Postcode</label>
+		<div class="col-sm-4">
+			<input id="postNum" name="postNum" type="text" class="form-control" th:value="*{homeAddress.postNum}" th:field="${user.homeAddress.postNum}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Residence address</legend>
+
+			<label class="form-control-label col-sm-2" for="livingAddress">Address</label>
+			<div class="col-sm-4">
+				<input id="livingAddress" name="livingAddress" type="text" placeholder="" class="form-control" th:value="*{livingAddress.address}" th:field="${user.livingAddress.address}" />
+			</div>
+
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<label class="form-control-label col-sm-2" for="livingCity">City</label>
+		<div class="col-sm-4">
+			<input id="livingCity" name="livingCity" type="text" class="form-control" th:value="*{livingAddress.city}" th:field="${user.livingAddress.city}" />
+		</div>
+		<label class="form-control-label col-sm-2" for="livingPostNum">Postcode</label>
+		<div class="col-sm-4">
+			<input id="livingPostNum" name="livingPostNum" type="text" placeholder="" class="form-control" th:value="*{livingAddress.postNum}" th:field="${user.livingAddress.postNum}" />
+		</div>
+	</div>
+</div>

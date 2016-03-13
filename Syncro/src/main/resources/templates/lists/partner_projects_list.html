@@ -1,0 +1,26 @@
+<div  xmlns:th="http://www.thymeleaf.org"  th:fragment="partner_projects_list">
+	<table class="table table-striped table-condensed" >
+				<thead>
+					<tr>
+						<th class="unique_value" >ID</th>
+						<th>Project name</th>
+						<th>Status</th>
+						<th>Info</th>
+						<th class="text-center" >Edit/Delete</th>
+					</tr>
+				</thead>
+				<tbody id="selectable">
+					<tr class="row_main_info project_for_partners_row" th:each="project : ${partnerProjects}" th:object="${project}">
+						<td class="unique_value" th:text="*{project._id}"></td>
+						<td th:text="*{project.data.name}"></td>
+						<td class="partner_project_status" th:text="*{status}"></td>
+						<td class="partner_project_info" th:text="*{info}"></td>
+						<td class="icons_collumn">
+							<span class="glyphicon glyphicon-save img-circle save_edited_partner_project_icon" aria-hidden="true" style="display:none"></span>
+							<span class="glyphicon glyphicon-pencil img-circle edit_partner_project_icon" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-trash img-circle delete_partner_project_icon" aria-hidden="true"></span>
+						</td>
+					</tr>
+				</tbody>
+	</table>
+</div>

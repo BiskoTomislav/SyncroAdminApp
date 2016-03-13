@@ -1,0 +1,92 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="partner_input_fields">
+	
+	<div class="form-group row">
+		<fieldset>
+			<legend>Main info</legend>
+			<!-- Text input-->
+			<label class="col-sm-2 form-control-label" for="companyName">Company name</label>
+			<div class="col-sm-4">
+				<input type="text" id="companyName" name="companyName" class="form-control" th:value="*{data.companyName}" th:field="${partner.data.companyName}" />
+			</div>
+
+			<label class="col-sm-2 form-control-label" for="address">Address</label>
+			<div class="col-sm-4">
+				<input id="address" name="address" type="text" placeholder="" class="form-control" th:value="*{data.address}" th:field="${partner.data.address}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-2 form-control-label" for="status">Status</label>
+		<div class="col-sm-4">
+			<select id="status" th:field="*{data.status}" style="width: 100%">
+				<option th:each="type : *{partnerStatusOptions}" th:value="${type}" th:text="${type}">Status ...</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-2 form-control-label" for="country">Country</label>
+		<div class="col-sm-4">
+			<select name="country" id="country" style="width: 100%" th:include="countries :: countries" th:field="*{data.country}"></select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Contact info</legend>
+
+			<label class="col-sm-2 form-control-label" for="email">Email</label>
+			<div class="col-sm-4">
+				<input id="mobile" name="mobile" type="email" placeholder="" class="form-control" th:value="*{data.email}" th:field="${partner.data.email}" />
+			</div>
+
+			<label class="col-sm-2 form-control-label" for="mobile">Telephone</label>
+			<div class="col-sm-4">
+				<input id="mobile" name="mobile" type="text" class="form-control" th:value="*{data.phone}" th:field="${partner.data.phone}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+
+		<label class="col-sm-2 form-control-label" for="web">Web site</label>
+		<div class="col-sm-4">
+			<input id="web" name="web" type="text" placeholder="" class="form-control" th:value="*{data.webSite}" th:field="${partner.data.webSite}" />
+		</div>
+
+		<label class="col-sm-2 form-control-label" for="phone">Facebook</label>
+		<div class="col-sm-4">
+			<input id="facebook" name="facebook" type="text" class="form-control" th:value="*{data.facebook}" th:field="${partner.data.facebook}" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<fieldset>
+			<legend>Person in charge</legend>
+
+			<label class="col-sm-2 form-control-label" for="personName">Person name</label>
+			<div class="col-sm-4" style="padding-top: 5px">
+				<input id="personName" name="personName" type="text" placeholder="" class="form-control" th:value="*{contactPerson.personName}" th:field="${partner.contactPerson.personName}" />
+			</div>
+
+			<label class="col-sm-2 form-control-label" for="personRole">Position</label>
+			<div class="col-sm-4" style="padding-top: 5px">
+				<input id="personRole" name="personRole" type="text" placeholder="" class="form-control" th:value="*{contactPerson.personRole}" th:field="${partner.contactPerson.personRole}" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="form-group row">
+
+		<label class="col-sm-2 form-control-label" for="email">Email</label>
+		<div class="col-sm-4">
+			<input id="personEmail" name="personEmail" type="email" placeholder="" class="form-control" th:value="*{contactPerson.personEmail}" th:field="${partner.contactPerson.personEmail}" />
+		</div>
+		<label class="col-sm-2 form-control-label" for="personPhone">Phone</label>
+		<div class="col-sm-4">
+			<input id="personPhone" name="personPhone" type="text" class="form-control" th:value="*{contactPerson.personPhone}" th:field="${partner.contactPerson.personPhone}" />
+		</div>
+	</div>
+	
+</div>

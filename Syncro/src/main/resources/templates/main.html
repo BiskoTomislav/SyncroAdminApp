@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<title>Syncro DataBase</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico" th:href="@{/images/favicon.ico}" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
+	
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"></link>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css"></link>
+	
+	<link rel="stylesheet" type="text/css" media="all"  href="../../css/main.css" th:href="@{/css/main.css}" />
+	<link rel="stylesheet" type="text/css" href="../../css/msdropdown/dd.css"  th:href="@{/css/msdropdown/dd.css}"/>
+	<link rel="stylesheet" type="text/css" href="../../css/msdropdown/flags.css" th:href="@{/css/msdropdown/flags.css}" />
+	<script src="../../js/jquery.dd.min.js" th:src="@{/js/jquery.dd.min.js}" ></script>
+
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+</head>
+<body>
+	<div class="panel">
+		<nav class="navbar navbar-default main_nav">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Syncro</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav ">
+						<li class="active"><a href="#" id="users" class="users header_button" title="Users">Users</a></li>
+						<li><a href="#" id="partners" class="partners header_button" title="Partners">Partners</a></li>
+						<li><a href="#" id="projects" class="projects header_button" title="Projects">Projects</a></li>
+						<li><a href="#" id="partnerships" class="partnerships header_button" title="Partnerships">Partnerships</a></li>
+						<li    sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" id="administration" class="administration header_button" title="Administration">Administration</a></li>
+					</ul>
+						<div class="col-sm-3 col-md-3">
+							<div class="navbar-form" role="search">
+								<div>
+									<input id="filter" type="text" class="form-control" placeholder="Search ..." name="srch-term" />
+								</div>
+							</div>
+	
+						</div>
+						<div class="navbar-header"   style="position: fixed;top: 0px;right: 10px;">
+							<a class="navbar-brand" href="#" style="padding-top: 20px;"><span sec:authentication="name">name</span></a>
+						
+						<ul class="nav navbar-nav">
+							<li><a style="height: 30px;" href="logout" id="logout" class="logout header_button" title="logout"><span class="glyphicon glyphicon-off img-circle " style="padding: 2px;font-size: 24px;" aria-hidden="true"></span></a></li>
+						</ul>
+						</div>
+				</div>
+			</div>
+		</nav>
+		<div id="main_content">
+			<div th:include="lists/users_list :: users_list"></div>
+		</div>
+	</div>
+	<script src="../../js/main.js" th:src="@{/js/main.js}" ></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<div class="col-md-6 col-md-offset-3" xmlns:th="http://www.thymeleaf.org" th:fragment="add_user">
+	<form id="addUserForm" action="/addUser" enctype="multipart/form-data" th:object="${user}">
+		<div class="row form-inline">
+			<img th:src="*{profileImage}" /> <label id="chosenFile" class="control-label" for="profile_img"></label>
+			<div style="padding: 5px 0px 5px 0px; width: 30px;" class="form-inline">
+				<input type="file" id="profile_img" name="profile_img" class="custom-file-input" accept="image/*"></input>
+			</div>
+			<!-- Button -->
+			<div class="control-group" style="position: fixed; top: 45px; left: 10px;">
+				<label class="control-label" for="saveUserButton"></label>
+				<div class="controls">
+					<button id="saveUserButton" name="saveUserButton" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="common_input_fields/user_input_fields :: user_input_fields"></div>
+
+	</form>
+</div>
+<script type="text/javascript">
+
+	$(document).ready(
+			function() {
+				$("#nationality").msDropdown();
+				$("#citizenship").msDropdown();
+				$("#status").msDropdown();
+				$("#projectId").msDropdown();
+
+				$("#profile_img").change(
+						function() {
+							var filename = $('input[type=file]').val().replace(
+									/C:\\fakepath\\/i, '');
+							$("#chosenFile").html(
+									"Photo for upload: " + filename);
+						});
+			})
+
+	$(function() {
+		$("#dialog").dialog({
+			autoOpen : false
+		});
+
+		$("#openProjectDialogButton").click(function() {
+			$("#dialog").dialog('open');
+		});
+	});
+
+	$("#saveUserButton").click(function() {
+		var frm = $('#addUserForm');
+		frm.submit(function(ev) {
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				type : "POST",
+				data : new FormData($("#addUserForm")[0]),
+				enctype : 'multipart/form-data',
+				processData : false,
+				contentType : false,
+				cache : false,
+				success : function(data) {
+					$("#main_content").hide().html(data).fadeIn('slow');
+				}
+			});
+			ev.preventDefault();
+		});
+	});
+</script>

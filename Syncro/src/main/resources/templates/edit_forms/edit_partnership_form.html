@@ -1,0 +1,38 @@
+<div class="col-md-6 col-md-offset-3" xmlns:th="http://www.thymeleaf.org" th:fragment="edit_project">
+	<form id="editProjectForm" action="/editProject" th:object="${project}">
+		<input class="unique_value" name="unique_value" type="hidden" th:value="*{_id}" /> <input class="subtype" name="subtype" type="hidden" th:value="*{subtype}" th:field="${project.subtype}" />
+		<div class="row form-inline">
+
+			<!-- Button -->
+			<div class="control-group" style="position: fixed; top: 45px; left: 10px;">
+				<label class="control-label" for="saveProjectButton"></label>
+				<div class="controls">
+					<button id="saveProjectButton" name="saveProjectButton" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="common_input_fields/project_partnership_input_fields :: project_partnership_input_fields"></div>
+
+	</form>
+</div>
+<script type="text/javascript">
+
+	$("#status").msDropdown();
+	$("#type").msDropdown();
+
+	$("#saveProjectButton").click(function() {
+		var frm = $('#editProjectForm');
+		frm.submit(function(ev) {
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				data : frm.serialize(),
+				success : function(data) {
+					$("#main_content").hide().html(data).fadeIn('slow');
+				}
+			});
+			ev.preventDefault();
+		});
+	});
+</script>

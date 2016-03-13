@@ -1,0 +1,76 @@
+<tr id="partner_extra_info_row1" class="partner_extra_info_row" xmlns:th="http://www.thymeleaf.org" th:object="${partner}">
+	<td>
+	<p ><b>Contact name:</b></p>
+		<p th:text="*{contactPerson.personName}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Contact role:</b></p>
+		<p th:text="*{contactPerson.personRole}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Contact email:</b></p>
+		<a  target="_blank" href="mailto:name@rapidtables.com" th:href="'mailto:' + *{contactPerson.personEmail}" th:text="*{contactPerson.personEmail}">Send mail</a>
+	</td>
+	
+	<td>
+	<p ><b>Contact phone:</b></p>
+		<p th:text="*{contactPerson.personPhone}"></p>
+	</td>
+	
+	<td>
+		<p ><b>Country:</b></p>
+		<img src="images/msdropdown/icons/blank.gif" class="flag hr fnone" th:class="'flag ' + *{data.country} + ' fnone'"></img>
+		<span class="ddlabel" th:text="${countryName}"></span>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+</tr>
+
+<tr id="partner_extra_info_row2" class="partner_extra_info_row" xmlns:th="http://www.thymeleaf.org" >
+	<td>
+	<b>Project name:</b>
+	</td>
+	<td>
+	<b>Status:</b>
+	</td>
+	<td colspan="4">
+	<b>Info:</b>
+	</td>
+
+</tr>
+
+<tr  class="partner_extra_info_row partner_extra_info_row4" xmlns:th="http://www.thymeleaf.org" th:each="project : ${partnerProjects}" th:object="${project}"  >	
+
+	<td class="partner_extra_info_data">
+		<p th:text="*{project.data.name}"> / </p>
+	</td>
+	<td class="partner_extra_info_data">
+		<p th:text="*{status}"> / </p>
+	</td>
+	<td colspan="4" class="partner_extra_info_data">
+		<p th:text="*{info}"> / </p>
+	</td>
+</tr>
+
+<tr th:if="${#lists.isEmpty(partnerProjects)}" class="partner_extra_info_row partner_extra_info_row4" xmlns:th="http://www.thymeleaf.org"  th:object="${project}">	
+
+	<td class="partner_extra_info_data">
+		<p> / </p>
+	</td>
+	<td class="partner_extra_info_data">
+		<p > / </p>
+	</td>
+	<td colspan="4" class="partner_extra_info_data">
+		<p> / </p>
+	</td>
+
+</tr>

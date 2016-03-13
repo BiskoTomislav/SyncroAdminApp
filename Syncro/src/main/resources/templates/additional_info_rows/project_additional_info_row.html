@@ -1,0 +1,89 @@
+<tr id="project_extra_info_row1" class="project_extra_info_row" xmlns:th="http://www.thymeleaf.org" th:object="${project}">
+	<td>
+		<p ><b>Ref ID:</b></p>
+		<p th:text="*{financingProgram.contactPerson.personPhone}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Begining of the project:</b></p>
+		<p th:text="*{timeframe.projectStartDate}"></p>
+	</td>
+	
+	<td>
+	<p ><b>End of the project:</b></p>
+		<p th:text="*{timeframe.projectEndDate}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Begining of the activity:</b></p>
+		<p th:text="*{timeframe.activityStartDate}"></p>
+	</td>
+	
+	<td>
+		<p ><b>End of the activity:</b></p>
+		<p th:text="*{timeframe.activityEndDate}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Contact person:</b></p>
+		<p th:text="*{financingProgram.contactPerson.personName}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Contact position:</b></p>
+		<p th:text="*{financingProgram.contactPerson.personRole}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Contact email:</b></p>
+		<p th:text="*{financingProgram.contactPerson.personEmail}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Contact phone:</b></p>
+		<p th:text="*{financingProgram.contactPerson.personPhone}"></p>
+	</td>
+</tr>
+
+<tr id="project_extra_info_row2" class="project_extra_info_row" xmlns:th="http://www.thymeleaf.org" th:object="${project}">
+	<td>
+		<p ><b>Co-financing (KN):</b></p>
+		<p th:text="*{financingProgram.coFinancingKN}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Co-financing (EUR):</b></p>
+		<p th:text="*{financingProgram.coFinancingEU}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Excange rate:</b></p>
+		<p th:text="${project.financingProgram.value}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Exchange rate date:</b></p>
+		<p th:text="*{financingProgram.dateOfValue}"></p>
+	</td>
+	
+	<td>
+		<p ><b>Submission of proposal:</b></p>
+		<p th:text="*{submissionDate}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Final report deadline:</b></p>
+		<p th:text="*{financingProgram.due}"></p>
+	</td>
+	
+	<td>
+	<p ><b>Notes:</b></p>
+		<p th:text="*{notes}"></p>
+	</td>
+	
+	<td>
+	</td>
+	
+	<td>
+	</td>
+</tr>
